@@ -14,7 +14,13 @@ const login = (username, password) => {
 
     return new Promise((resolve, reject) => {
         fetch(`${config.apiUrl}/login`, options)
-            .then(resolve)
+            .then((response) => {
+                if (response.status !== 200) {
+                    reject({ status: response.status, statusText: response.statusText });
+                }
+
+                resolve(response);
+            })
             .catch(reject);
     });
 };

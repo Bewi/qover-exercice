@@ -8,8 +8,6 @@ const controllers = require('./controllers');
 
 const app = express();
 
-
-
 passport.use(new BasicStrategy((userId, password, done) => {
     if (userId === 'contact@qover.me' && password === 'guest') {
         return done(null, { userId });
