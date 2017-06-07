@@ -3,18 +3,14 @@ const passport = require('passport');
 const { BasicStrategy } = require('passport-http');
 
 const middlewares = require('./middlewares');
-
 const controllers = require('./controllers');
+const db = require('./db');
+
+db.connect();
 
 const app = express();
 
-passport.use(new BasicStrategy((userId, password, done) => {
-    if (userId === 'contact@qover.me' && password === 'guest') {
-        return done(null, { userId });
-    }
-
-    return done(null, false);
-}));
+passport.use(new BasicStrategy(middlewares.authenticationMiddleware));
 
 app.use(middlewares.corsMiddleware());
 
