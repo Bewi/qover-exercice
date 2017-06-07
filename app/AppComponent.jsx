@@ -1,11 +1,17 @@
-import React, { Component } from 'React';
+import React, { Component } from 'react';
+
+import { Container } from 'semantic-ui-react';
+
+import Login from './login/LoginComponent';
 
 class AppComponent extends Component {
-
     render() {
-        return <h1>Hello world</h1>;
+        return (
+            <Container>
+                <Login />
+            </Container>
+        );
     }
-
 }
 
 export default AppComponent;
