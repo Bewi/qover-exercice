@@ -6,6 +6,12 @@ const login = (username, password) => ({
     payload: loginService.login(username, password),
 });
 
+const logout = () => ({
+    type: constants.LOGOUT,
+    payload: loginService.logout(),
+});
+
 export default {
     login,
+    logout,
 };

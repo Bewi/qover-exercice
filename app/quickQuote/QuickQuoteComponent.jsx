@@ -1,7 +1,10 @@
 import React from 'react';
+import Nav from '../layout/NavComponent';
 
 const QuickQuoteComponent = () => (
-    <h1>Quick quotes</h1>
+    <div>
+        <Nav />
+    </div>
 );
 
 export default QuickQuoteComponent;

@@ -15,6 +15,8 @@ const login = (state = initialState, action) => {
             return { pending: false, loggedIn: true };
         case constants.LOGIN_ERROR:
             return { pending: false, loggedIn: false, error: true };
+        case constants.LOGOUT:
+            return { pending: false, error: false, loggedIn: false };
         default:
             return state;
     }

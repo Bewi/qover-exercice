@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import { Button, Segment, Form, Message } from 'semantic-ui-react';
+import history from '../history';
 
 import actions from './loginActions';
 
@@ -15,6 +16,12 @@ class LoginComponent extends Component {
             password: '',
             dirty: false,
         };
+    }
+
+    componentDidUpdate() {
+        if (this.props.loggedIn) {
+            history.push('/');
+        }
     }
 
     handleLogin(event) {
@@ -76,6 +83,7 @@ LoginComponent.defaultProps = {
 
 LoginComponent.propTypes = {
     pending: PropTypes.bool,
+    loggedIn: PropTypes.bool,
     error: PropTypes.bool,
     login: PropTypes.func.isRequired,
 };
@@ -83,6 +91,7 @@ LoginComponent.propTypes = {
 const mapStateToProps = state => ({
     pending: state.login.pending,
     error: state.login.error,
+    loggedIn: state.login.loggedIn,
 });
 
 const mapDispatchToProps = dispatch => ({

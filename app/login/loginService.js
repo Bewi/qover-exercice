@@ -1,5 +1,6 @@
 import config from '../config';
 import credentialsService from './credentialsService';
+import history from '../history';
 
 const login = (username, password) => {
     credentialsService.store(username, password);
@@ -25,6 +26,12 @@ const login = (username, password) => {
     });
 };
 
+const logout = () => {
+    credentialsService.clear();
+    history.push('/login');
+};
+
 export default {
     login,
+    logout,
 };
