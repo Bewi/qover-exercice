@@ -1,18 +1,13 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-import { Provider } from 'react-redux';
-import { createStore, applyMiddleware } from 'redux';
-import promiseMiddleware from 'redux-promise-middleware';
+import { BrowserRouter, Route } from 'react-router-dom';
 
 import App from './AppComponent';
-import reducers from './reducers';
-
-const store = createStore(reducers, applyMiddleware(promiseMiddleware()));
 
 const renderMe = (
-    <Provider store={store}>
-        <App />
-    </Provider>
+    <BrowserRouter >
+        <Route path="/" component={App} />
+    </BrowserRouter>
 );
 
 ReactDOM.render(renderMe, document.getElementById('app'));

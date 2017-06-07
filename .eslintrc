@@ -16,6 +16,14 @@
                 "SwitchCase": 1
             }
         ],
+        "react/forbid-prop-types": [
+            "error",
+            {
+                "forbid": [
+                    "any"
+                ]
+            }
+        ],
         "react/jsx-indent-props": [
             "error",
             4

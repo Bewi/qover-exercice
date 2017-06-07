@@ -1,6 +1,13 @@
 import constants from './loginConstants';
+import credentialsService from './credentialsService';
 
-const login = (state = { pending: false, loggedIn: false, error: false }, action) => {
+const initialState = {
+    pending: false,
+    error: false,
+    loggedIn: credentialsService.get(),
+};
+
+const login = (state = initialState, action) => {
     switch (action.type) {
         case constants.LOGIN_PENDING:
             return { pending: true };
