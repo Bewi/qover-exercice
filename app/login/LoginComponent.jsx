@@ -35,7 +35,13 @@ class LoginComponent extends Component {
                 <Form loading={this.props.pending} onSubmit={e => this.handleLogin(e)}>
                     <Form.Field>
                         <label htmlFor="username">Log-in</label>
-                        <input type="text" id="username" name="username" value={this.state.username} onChange={e => this.updateUsername(e)} />
+                        <input
+                            type="text"
+                            id="username"
+                            name="username"
+                            value={this.state.username}
+                            onChange={e => this.updateUsername(e)}
+                        />
                     </Form.Field>
                     <Form.Field>
                         <label htmlFor="password">Password</label>
