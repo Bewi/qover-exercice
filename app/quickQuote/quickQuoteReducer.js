@@ -7,7 +7,7 @@ const quickQuote = (state = { pending: false, computedPrice: 0, error: false }, 
         case constants.COMPUTE_PRICE_FULFILLED:
             return { pending: false, computedPrice: action.payload.computedPrice, error: false };
         case constants.COMPUTE_PRICE_ERROR:
-            return { pending: false, computedPrice: 0, error: true };
+            return { pending: false, computedPrice: 0, error: true, errorMessage: action.payload.data ? action.payload.data.message : '' };
         default:
             return state;
     }

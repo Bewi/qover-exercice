@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { Segment, Form, Input, Select, Button } from 'semantic-ui-react';
+import { Segment, Form, Input, Select, Button, Message } from 'semantic-ui-react';
 import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
 
@@ -83,6 +83,7 @@ class QuickQuoteComponent extends Component {
                                 required
                             />
                         </Form.Field>
+                        <Message error header="OLA Guaçamole !" content={this.props.errorMessage || 'Invalid request'} />
                         <Button type="submit" color="green" fluid >GET PRICE</Button>
                     </Form>
                 </Segment>
@@ -92,9 +93,14 @@ class QuickQuoteComponent extends Component {
     }
 }
 
+QuickQuoteComponent.defaultProps = {
+    errorMessage: '',
+};
+
 QuickQuoteComponent.propTypes = {
     pending: PropTypes.bool.isRequired,
     error: PropTypes.bool.isRequired,
+    errorMessage: PropTypes.string,
     computedPrice: PropTypes.number.isRequired,
     computePrice: PropTypes.func.isRequired,
 };
@@ -103,6 +109,7 @@ const mapStateToProps = state => ({
     pending: state.quickQuote.pending,
     computedPrice: state.quickQuote.computedPrice,
     error: state.quickQuote.error,
+    errorMessage: state.quickQuote.errorMessage,
 });
 
 const mapDispatchToProps = dispatch => ({

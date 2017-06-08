@@ -14,11 +14,17 @@ const computePrice = (driverName, car, price) => {
     return new Promise((resolve, reject) => {
         fetch(`${config.apiUrl}/quickQuote?driverName=${driverName}&car=${car}&price=${price}`, options)
             .then((response) => {
-                if (response.status !== 200) {
+                if (response.status === 422) {
+                    response.json().then(data => reject({
+                        status: response.status,
+                        statusText: response.statusText,
+                        data,
+                    }));
+                } else if (response.status !== 200) {
                     reject({ status: response.status, statusText: response.statusText });
+                } else {
+                    response.json().then(data => resolve(data));
                 }
-
-                response.json().then(data => resolve(data));
             })
             .catch(reject);
     });
