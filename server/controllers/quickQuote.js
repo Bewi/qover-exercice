@@ -5,13 +5,13 @@ const repositories = require('../repositories');
 const router = express.Router();
 
 function validatePrice(price) {
-    return price >= 5000 && price <= 7500;
+    return price >= 5000 && price <= 75000;
 }
 
 const carComputingList = {
-    audi: { fixed: 250, ratio: 0.3 },
-    bmw: { fixed: 150, ratio: 0.4 },
-    porsche: { fixed: 500, ratio: 0.7 },
+    audi: { fixed: 250, ratio: 0.003 },
+    bmw: { fixed: 150, ratio: 0.004 },
+    porsche: { fixed: 500, ratio: 0.007 },
 };
 
 function computePrice(price, car) {
